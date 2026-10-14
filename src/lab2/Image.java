@@ -1,14 +1,36 @@
 package lab2;
 
-public class Image implements Element {
-    private final String url;
+import java.awt.Dimension;
+import java.util.concurrent.TimeUnit;
 
-    public Image(String url) {
-        this.url = url;
+public class Image implements Element, Picture {
+    private final String url;
+    private final Dimension dim = new Dimension(800, 600);
+    private final ImageContent content;
+
+    public Image(String name) {
+        this.url = name;
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.content = new ImageContent(name);
     }
 
-    public String getUrl() {
+    @Override
+    public String url() {
         return url;
+    }
+
+    @Override
+    public Dimension dim() {
+        return dim;
+    }
+
+    @Override
+    public ImageContent content() {
+        return content;
     }
 
     @Override

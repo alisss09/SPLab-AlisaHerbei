@@ -3,24 +3,26 @@ package lab2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book extends Section {
     private final List<Author> authors = new ArrayList<>();
-    private final List<Element> elements = new ArrayList<>();
+
+    public Book(String title) {
+        super(title);
+    }
 
     public void addAuthor(Author a) {
         authors.add(a);
     }
 
     public void addContent(Element e) {
-        elements.add(e);
+        add(e);
     }
 
+    @Override
     public void print() {
         for (Author a : authors) {
             a.print();
         }
-        for (Element e : elements) {
-            e.print();
-        }
+        super.print();
     }
 }
